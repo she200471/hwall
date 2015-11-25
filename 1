@@ -1,0 +1,135 @@
+import java.util.Scanner;
+public class B01102048
+{
+    public static void main(String args[])
+ {    	    
+    int number=0, i=0; 
+    int score[]=new int[10];
+	Scanner input=new Scanner(System.in);
+	System.out.println("Welcome to use this Java application!");
+	
+inputscoreloop: 
+	for (i=0;i<=10;)
+	{
+	     System.out.println("Please input a student’s score:");
+  	     score[i]=input.nextInt();//使用者輸入資料  		
+  	//用陣列儲存
+
+ 	 
+  	
+  	//分數介於0~100之間
+  	   if (score[i]<0)
+  	      {System.out.println("Wrong score!");
+  	       continue inputscoreloop;}
+  	   if (score[i]>100)
+  	      {System.out.println("Wrong score!");
+  	       continue inputscoreloop;}
+  	   else
+  	 {
+continueinputloop: 
+    for (int round=0;round<=10;round++)
+  	   {input.close(); 
+  	    number++;
+  	    i++;
+  		System.out.println("You have input "+number+" score information.");
+  		if (number>=10)
+  		    {System.out.println("You have completed the score input!");
+ 	         step5(score,number, i);}
+  		System.out.println("continue?\n"
+  				+ "Press ‘1’, ‘Y’, or ‘y’ for Yes, and ‘2’, ‘N’, or ‘n’ for No:");
+  	    Scanner yesno1=new Scanner(System.in);
+  	    String YesNo=yesno1.next();
+
+//Step 4
+        switch (YesNo)
+  	  	{case "1":
+  	  		if (input.hasNextInt())
+  	  		{continue inputscoreloop;}
+  	     case "Y":
+  	    	if (input.hasNextInt())
+  	    	{continue inputscoreloop;}
+  	     case "y":
+  	    	if (input.hasNextInt())
+  	    	{continue inputscoreloop;}
+  	     case "2":
+  	    	 {   yesno1.close();
+  	    		 step5(score,number, i);}
+ 	     case "N":
+ 	    	{step5(score,number, i);}
+ 	     case "n":
+ 	    	 {step5(score,number, i);}
+ 	     default:
+ 	        System.out.println("Wrong Information!");
+ 	        number--;
+ 	     continue continueinputloop;} 
+
+}  	  	 
+ 
+  	     }
+
+
+ }
+}
+ //Step 5
+public static void step5(int score2[], int number2, int i2)
+{
+dosomethingloop:
+     for (int round2=0;round2<100;round2++)
+  	 {System.out.println("What operation do you want to execute?\n"
+ 			+ "Press ‘1’ to list all scores;\n"
+ 			+ "Press ‘2’ to calculate the average of scores;\n"
+ 			+ "Press ‘3’ to sort and list the scores (from minimum to maximum);\n"
+ 			+ "Press ‘4’ to continue the score input;\n"
+ 			+ "Press ‘5’ to quit this Java application.");  	 
+           Scanner yesno2=new Scanner(System.in);
+     	   int YesNo2;
+      	   YesNo2=yesno2.nextInt();
+
+//Step 6-10
+     	 switch (YesNo2)
+      	  	{case 1:
+      	  	 {for (int n=0;n<=score2.length;n++)
+      	  	 System.out.println(+score2[n]);
+      	        continue dosomethingloop;}
+      	     case 2:      	    	
+      	       {int sum=0;
+      	    	 for (int n=0;n<=score2.length;n++)
+      	    	   {sum=sum+score2[n];}
+      	           float average;
+      	           average=(sum/score2.length);
+            	  	 System.out.println(+average);
+                continue dosomethingloop;}
+      	     case 3:
+      	          //泡沫排序法
+      	          {for (int n=0;n<score2.length-1;n++)  //從score[0]比到score[8]
+      	            {for (int j=0;j<score2.length-n-1;j++)  
+      	               {if (score2[j+1]>score2[j])
+      	                    {int temp=score2[j+1];  //交換陣列元素
+      	                    score2[j+1]=score2[j];
+      	                    score2[j]=temp; 	               
+      	               }
+      	              System.out.println(score2[j]);
+      	               }
+      	            }      
+    	                continue dosomethingloop;
+      	          }
+      	     case 4:
+      	    	if (number2<=10)
+      	    	{yesno2.close();
+      	    	return;}	
+      	    	if (number2>10)
+      	    	{System.out.println("You have already completed the score input!");
+      	    	continue dosomethingloop;}
+      	    	
+     	     case 5:
+     	    	System.out.println("Thank you for using this Java application! Goodbye!");
+    	        break;}
+     	        yesno2.close();
+  	 }
+      	   
+     	   
+ 	  	 
+      	  	}
+  	
+ }
+	
